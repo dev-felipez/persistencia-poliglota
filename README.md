@@ -72,11 +72,13 @@ coord_origem = (-7.120, -34.850)
 coord_destino = (-7.11768, -34.83239)
 
 distancia = geodesic(coord_origem, coord_destino).km
-print(f"Distância: {distancia:.2f} km")```
+print(f"Distância: {distancia:.2f} km")
+```
 ```makefile
 Saída esperada:
 
-Distância: 1.80 km```
+Distância: 1.80 km
+```
 app.py — Interface em Streamlit
 Integra todos os módulos e exibe a interface gráfica interativa.
 
@@ -96,7 +98,8 @@ locais = [
 ]
 
 df = pd.DataFrame(locais)
-st.dataframe(df, width="stretch")```
+st.dataframe(df, width="stretch")
+```
 
 Fluxo de Dados (detalhado)
 Cadastro de Cidade (SQLite)
