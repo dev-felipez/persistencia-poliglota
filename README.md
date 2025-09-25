@@ -22,9 +22,11 @@ Gerencia cidades em um banco relacional com suporte a tabelas.
 - Listagem de cidades existentes.  
 
 **Exemplo de inserção:**
-```
+```python
 inserir_cidade("João Pessoa", "PB")
 inserir_cidade("Recife", "PE")
+```
+
 db_mongo.py — Banco de Documentos (MongoDB) para Locais
 Gerencia locais de interesse em formato JSON.
 Cada local contém:
@@ -38,7 +40,7 @@ Latitude e longitude
 Descrição
 
 Exemplo de documento no MongoDB:
-
+```json
 {
   "_id": ObjectId("..."),
   "nome_local": "Praça da Independência",
@@ -46,8 +48,9 @@ Exemplo de documento no MongoDB:
   "coordenadas": {"latitude": -7.11532, "longitude": -34.861},
   "descricao": "Ponto turístico central"
 }
+```
 Exemplo de inserção em Python:
-
+```python
 inserir_local(
     "Farol do Cabo Branco",
     "João Pessoa",
@@ -55,6 +58,7 @@ inserir_local(
     -34.79472,
     "Ponto mais oriental das Américas"
 )
+```
 geoprocessamento.py — Funções de Geolocalização
 Implementa cálculos de distância e consultas por proximidade.
 
@@ -63,15 +67,16 @@ Usa Geopy para calcular a distância entre dois pontos.
 Permite buscar locais dentro de um raio específico a partir de uma coordenada.
 
 Exemplo de cálculo de distância:
-
+```python
 coord_origem = (-7.120, -34.850)
 coord_destino = (-7.11768, -34.83239)
 
 distancia = geodesic(coord_origem, coord_destino).km
-print(f"Distância: {distancia:.2f} km")
+print(f"Distância: {distancia:.2f} km")```
+```makefile
 Saída esperada:
 
-Distância: 1.80 km
+Distância: 1.80 km```
 app.py — Interface em Streamlit
 Integra todos os módulos e exibe a interface gráfica interativa.
 
@@ -81,7 +86,7 @@ Integração com SQLite e MongoDB.
 Visualização interativa de dados com tabelas e mapas.
 
 Exemplo de tabela no Streamlit:
-
+```python
 import streamlit as st
 import pandas as pd
 
@@ -91,7 +96,8 @@ locais = [
 ]
 
 df = pd.DataFrame(locais)
-st.dataframe(df, width="stretch")
+st.dataframe(df, width="stretch")```
+
 Fluxo de Dados (detalhado)
 Cadastro de Cidade (SQLite)
 Usuário insere nome e estado.
