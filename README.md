@@ -101,73 +101,56 @@ df = pd.DataFrame(locais)
 st.dataframe(df, width="stretch")
 ```
 
-Fluxo de Dados (detalhado)
-Cadastro de Cidade (SQLite)
-Usuário insere nome e estado.
+##Fluxo de dados:
 
-Dados são persistidos em tabela no banco relacional.
+### 1. Cadastro de Cidade (SQLite)
+- Usuário insere **nome** e **estado**.  
+- Dados são persistidos em tabela no banco relacional.  
+- Essas cidades servem de referência para vincular locais no MongoDB.  
 
-Essas cidades servem de referência para vincular locais no MongoDB.
+### 2. Cadastro de Local (MongoDB)
+- Usuário escolhe uma cidade já existente (via SQLite).  
+- Informa **nome**, **latitude**, **longitude** e **descrição**.  
+- Dados são salvos no MongoDB como documento JSON.  
 
-Cadastro de Local (MongoDB)
-Usuário escolhe uma cidade já existente (via SQLite).
+### 3. Listagem
+- O sistema recupera:
+  - Todas as cidades do **SQLite**.  
+  - Todos os locais do **MongoDB**.  
+- Exibe em tabelas interativas (**Streamlit DataFrame**).  
 
-Informa nome, latitude, longitude e descrição.
+### 4. Mapa
+- Os locais armazenados no **MongoDB** são plotados em mapa **Folium**.  
+- Cada ponto tem popup com **nome** e **descrição**.  
+- O mapa é interativo, permitindo **zoom** e **movimentação**.  
 
-Dados são salvos no MongoDB como documento JSON.
+### 5. Busca por Proximidade
+- Usuário informa uma coordenada (**lat/lon**) e um **raio em km**.  
+- O sistema calcula a distância entre o ponto informado e cada local.  
+- Exibe apenas os locais encontrados dentro do raio especificado.  
 
-Listagem
-O sistema recupera:
+---
 
-Todas as cidades do SQLite.
+## Funcionalidades Principais
 
-Todos os locais do MongoDB.
+- **Cadastro de Cidades (SQLite):** registra cidades com nome e estado em banco relacional.  
+- **Cadastro de Locais (MongoDB):** armazena locais com informações flexíveis, vinculados a cidades cadastradas.  
+- **Listagem Completa:** exibe dados tabulares de forma clara e organizada.  
+- **Mapa Interativo (Folium):** visualização geográfica dos locais cadastrados com marcadores e popups.  
+- **Busca de Proximidade (Geopy):** localiza pontos próximos a uma coordenada definida pelo usuário, exibindo a distância em km.
 
-Exibe em tabelas interativas (Streamlit DataFrame).
+## Tecnologias:
 
-Mapa
-Os locais armazenados no MongoDB são plotados em mapa Folium.
+- **Python**
+- **Banco de dados relacional (SQLite)**
+- **Banco de dados NoSQL (MongoDB)**
+- **Framework Web (StreamLit)**
+- **Mapas Interativos (Folium + streamlit-folium)**
+- **Geoprocessamento (GeoPy)**
+- ** Manipulação de Dados**
 
-Cada ponto tem popup com nome e descrição.
+## Autores:
 
-O mapa é interativo, permitindo zoom e movimentação.
-
-Busca por Proximidade
-Usuário informa uma coordenada (lat/lon) e raio em km.
-
-O sistema calcula distância entre o ponto informado e cada local.
-
-Exibe apenas os locais encontrados dentro do raio especificado.
-
-Funcionalidades Principais
-Cadastro de Cidades (SQLite): Registra cidades com nome e estado em banco relacional.
-
-Cadastro de Locais (MongoDB): Armazena locais com informações flexíveis, vinculados a cidades cadastradas.
-
-Listagem Completa: Exibe dados tabulares de forma clara e organizada.
-
-Mapa Interativo (Folium): Visualização geográfica dos locais cadastrados com marcadores e popups.
-
-Busca de Proximidade (Geopy): Localiza pontos próximos a uma coordenada definida pelo usuário, retornando a distância em km.
-
-Tecnologias Utilizadas
-Linguagem: Python 3.10+
-
-Banco de Dados Relacional: SQLite
-
-Banco de Dados NoSQL: MongoDB (local ou Atlas)
-
-Framework Web: Streamlit
-
-Mapas Interativos: Folium + streamlit-folium
-
-Geoprocessamento: Geopy
-
-Manipulação de dados: Pandas
-
-Autores
-Felipe Gabriel Mendes de Sousa
-
-Yasmin Carvalho dos Santos
-
-Vitória Gabrielly das Chagas Moreira
+- Felipe Gabriel Mendes de sousa
+- Yasmin Carvalho dos Santos
+- Vitória Gabrielly das Chagas Moreira
