@@ -2,11 +2,8 @@ import sqlite3
 
 def conectar():
     conn = sqlite3.connect("banco.db")
-    return conn
-
-def criar_tabela():
-    conn = conectar()
     cursor = conn.cursor()
+    # Garante que a tabela cidades existe
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS cidades (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -15,12 +12,15 @@ def criar_tabela():
         )
     """)
     conn.commit()
-    conn.close()
+    return conn
 
 def inserir_cidade(nome, estado):
     conn = conectar()
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO cidades (nome, estado) VALUES (?, ?)", (nome, estado))
+    cursor.execute(
+        "INSERT INTO cidades (nome, estado) VALUES (?, ?)",
+        (nome, estado)
+    )
     conn.commit()
     conn.close()
 
